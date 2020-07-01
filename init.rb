@@ -6,3 +6,6 @@ Redmine::Plugin.register :redmine_last_value do
   url 'https://daxonet.com'
   author_url 'https://daxonet.com/about'
 end
+
+
+require_dependency 'hooks/view_custom_fields_form_issue_custom_field_hook'

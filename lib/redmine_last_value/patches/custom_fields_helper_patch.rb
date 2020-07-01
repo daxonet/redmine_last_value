@@ -17,7 +17,7 @@ module RedmineLastValue
           tag = custom_field_tag_with_label_without_last_value(name,custom_value,options)
           if custom_value.custom_field.show_last_value
             value = CustomValue
-              .joins("JOIN issues on issues.id = custom_values.customized_id")
+              .joins("JOIN #{table_name_prefix}issues#{table_name_suffix} as issues on issues.id = custom_values.customized_id")
               .select("MAX(value) value")
               .where(custom_field_id: custom_value.custom_field.id)
               .where("issues.project_id=?",custom_value.customized.project_id)
